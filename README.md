@@ -1,25 +1,24 @@
-# fish-ssh-agent
+# Fish shell SSH agent
 
-Utility functions to start your ssh agent when using fish shell.
-You will only need to run `ssh-add` and type your password once,
-after the running ssh_agent should do the work for you.
+Utility functions to start your SSH agent when using the fish shell.
+
+Do you ever login to the same host multiple times? If you are using `ssh-agent`
+and `ssh-add` to add your keys (which you should), you need to call these commands
+every time you login.
+
+This fisher plugin solves this by exporting the `SSH_AUTH_SOCK` and `SSH_AGENT_PID`
+started by the first agent, so subsequent logins can use the same ssh agent and thus
+your already added ssh keys.
+
+You will only need to run `ssh-add` and type your password once.
+After that the running ssh agent should do the work for you.
 
 ## Installation
 
-### Using [fundle](https://github.com/danhper/fundle)
-
-Add
-
-```
-fundle plugin 'danhper/fish-ssh-agent'
-```
-
-to your `config.fish`, reload your shell and run `fundle install`.
-
 ### Using [Fisher](https://github.com/jorgebucaran/fisher)
 
-```
-fisher install danhper/fish-ssh-agent
+```sh
+fisher install thernstig/fish-ssh-agent
 ```
 
 ### Manually
