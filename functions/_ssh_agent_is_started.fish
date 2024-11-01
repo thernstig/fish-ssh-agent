@@ -27,14 +27,18 @@ function _ssh_agent_is_started -d "Check if ssh agent is already started"
     # If SSH_AGENT_PID is still not set, something went wrong.
     # Remove the SSH environment file and indicate the agent is not started.
     if test -z "$SSH_AGENT_PID"
-        rm "$SSH_ENV"
+        if test -f "$SSH_ENV"
+            rm "$SSH_ENV"
+        end
         return 1
     end
 
     # Verify that the ssh-agent can be contacted.
     ssh-add -l >/dev/null 2>&1
     if test "$status" -eq 2
-        rm "$SSH_ENV"
+        if test -f "$SSH_ENV"
+            rm "$SSH_ENV"
+        end
         return 1
     end
 end
