@@ -1,7 +1,7 @@
 if test -z "$SSH_ENV"
-    set -xg SSH_ENV $HOME/.ssh/environment
+    set -xg SSH_ENV "$HOME/.ssh/ssh_agent_env.fish"
 end
 
-if not __ssh_agent_is_started
-    __ssh_agent_start
+if not _ssh_agent_is_started
+    _ssh_agent_start
 end
