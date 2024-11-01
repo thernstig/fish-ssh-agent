@@ -24,3 +24,7 @@ fisher install thernstig/fish-ssh-agent
 ### Manually
 
 Copy `functions` and `conf.d` to your `$__fish_config_dir` directory. That's all.
+
+## Credits
+
+Credits go to <https://github.com/danhper/fish-ssh-agent/> for the original implementation.
