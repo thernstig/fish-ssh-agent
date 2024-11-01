@@ -1,4 +1,4 @@
-function _ssh_agent_is_started -d "Check if ssh agent is already started"
+function _ssh_agent_is_started --description "Check if ssh agent is already started"
     if test -n "$SSH_CONNECTION"
         # This is an SSH session
         set -l output (ssh-add -l 2>&1)
