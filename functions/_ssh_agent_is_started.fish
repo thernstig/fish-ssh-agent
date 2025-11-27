@@ -24,12 +24,12 @@ function _ssh_agent_is_started --description "Check if ssh agent is already star
 
         # Verify that the ssh-agent can be contacted.
         ssh-add -l >/dev/null 2>&1
-        if test "$status" -eq 2
-            rm -f "$SSH_ENV"
-            return 1
+        if test $status -eq 0; or test $status -eq 1
+            return 0
         end
 
-        return 0
+        rm -f "$SSH_ENV"
+        return 1
     end
 
     return 1
