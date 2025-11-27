@@ -28,7 +28,7 @@ function _ssh_agent_is_started --description "Check if ssh agent is already star
     # Remove the SSH environment file and indicate the agent is not started.
     if test -z "$SSH_AGENT_PID"
         if test -f "$SSH_ENV"
-            rm "$SSH_ENV"
+            rm -f "$SSH_ENV"
         end
         return 1
     end
@@ -37,7 +37,7 @@ function _ssh_agent_is_started --description "Check if ssh agent is already star
     ssh-add -l >/dev/null 2>&1
     if test "$status" -eq 2
         if test -f "$SSH_ENV"
-            rm "$SSH_ENV"
+            rm -f "$SSH_ENV"
         end
         return 1
     end
