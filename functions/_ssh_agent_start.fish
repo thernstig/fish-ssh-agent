@@ -9,7 +9,7 @@ function _ssh_agent_start --description "Start a new ssh agent"
             if test -f "$SSH_ENV_FILE"
                 source "$SSH_ENV_FILE" >/dev/null 2>&1
                 ssh-add -l >/dev/null 2>&1
-                if test $status -eq 0; or test $status -eq 1
+                if contains $status 0 1
                     return 0
                 end
             end
@@ -23,7 +23,7 @@ function _ssh_agent_start --description "Start a new ssh agent"
         if test -f "$SSH_ENV_FILE"
             source "$SSH_ENV_FILE" >/dev/null 2>&1
             ssh-add -l >/dev/null 2>&1
-            if test $status -eq 0; or test $status -eq 1
+            if contains $status 0 1
                 rmdir "$lock_file"
                 return 0
             end
