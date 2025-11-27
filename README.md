@@ -25,6 +25,15 @@ fisher install thernstig/fish-ssh-agent
 
 Copy `functions` and `conf.d` to your `$__fish_config_dir` directory. That's all.
 
+## Configuration
+
+You can configure the location of the environment file by setting `SSH_ENV_FILE`.
+The default location is `~/.ssh/ssh_agent_env.fish`.
+
+This file is used to store the environment variables (`SSH_AUTH_SOCK` and `SSH_AGENT_PID`)
+exported by the `ssh-agent`. It is sourced by the plugin to ensure all shell instances
+share the same agent.
+
 ## Credits
 
 Credits go to <https://github.com/danhper/fish-ssh-agent/> for the original implementation.
