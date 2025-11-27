@@ -57,5 +57,4 @@ function _ssh_agent_start --description "Start a new ssh agent"
     chmod 600 "$SSH_ENV_FILE"
     source "$SSH_ENV_FILE"
     rmdir "$lock_file"
-    echo "Started new SSH agent. Run 'ssh-add' to add keys."
 end
