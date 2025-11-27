@@ -28,6 +28,8 @@ function _ssh_agent_is_started --description "Check if ssh agent is already star
             rm -f "$SSH_ENV"
             return 1
         end
+
+        return 0
     end
 
     return 1
