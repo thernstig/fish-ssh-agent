@@ -4,6 +4,7 @@ function _ssh_agent_start --description "Start a new ssh agent"
     # This output is then converted to fish-style output.
     set -l ssh_output (ssh-agent -c)
     set -l filtered_output
+
     for line in $ssh_output
         if string match --quiet --regex '^echo' -- $line
             continue

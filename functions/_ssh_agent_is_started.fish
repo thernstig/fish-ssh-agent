@@ -1,15 +1,18 @@
 function _ssh_agent_is_started --description "Check if ssh agent is already started"
+
+    # Check if it is an SSH session. The SSH_CONNECTION environment variable is automatically
+    # set by the remote SSH server (sshd) when you log in to a remote machine via SSH.
+    # We check for exit codes 0 (keys present) and 1 (no keys) from ssh-add.
+    # Both indicate a valid agent is reachable (usually via forwarding, but could be a pre-existing local agent).
+    # (If no agent were reachable, ssh-add would return 2).
     if test -n "$SSH_CONNECTION"
-        # This is an SSH session
         set -l output (ssh-add -l 2>&1)
         if test $status -eq 0
-            # An SSH agent was forwarded
+            # Success - Agent running, keys present.
             return 0
         else if test $status -eq 1
-            if test "$output" = "The agent has no identities."
-                # An SSH agent was forwarded but has no identities
-                return 0
-            end
+            # Command failed - Agent running, but no keys present.
+            return 0
         end
     end
 
