@@ -6,6 +6,10 @@ Do you ever login to the same host multiple times? If you are using `ssh-agent`
 and `ssh-add` to add your keys (which you should), you need to call these commands
 every time you login.
 
+This is not only relevant for remote server access: SSH is also commonly used to sync
+git repositories with Github, Gitlab, or similar services. Each new shell session may
+require you to re-add your keys to the agent to enable seamless git operations over SSH.
+
 This fisher plugin solves this by exporting the `SSH_AUTH_SOCK` and `SSH_AGENT_PID`
 started by the first agent, so subsequent logins can use the same ssh agent and thus
 your already added ssh keys.
